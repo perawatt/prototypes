@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'list-address',
     pathMatch: 'full'
   },
   {
@@ -34,7 +34,8 @@ const routes: Routes = [
   {
     path: 'form-binding',
     loadChildren: () => import('./form-binding/form-binding.module').then( m => m.FormBindingPageModule)
-  },  {
+  },
+  {
     path: 'form-send-data',
     loadChildren: () => import('./form-send-data/form-send-data.module').then( m => m.FormSendDataPageModule)
   },
@@ -46,6 +47,26 @@ const routes: Routes = [
     path: 'memory',
     loadChildren: () => import('./memory/memory.module').then( m => m.MemoryPageModule)
   },
+  {
+    path: 'kyc-address',
+    loadChildren: () => import('./kyc-address/kyc-address.module').then( m => m.KycAddressPageModule)
+  },
+  {
+    path: 'business-address',
+    loadChildren: () => import('./business-address/business-address.module').then( m => m.BusinessAddressPageModule)
+  },
+  {
+    path: 'user-address',
+    loadChildren: () => import('./user-address/user-address.module').then( m => m.UserAddressPageModule)
+  },
+  {
+    path: 'list-address',
+    loadChildren: () => import('./list-address/list-address.module').then( m => m.ListAddressPageModule)
+  },  {
+    path: 'user-address-type2',
+    loadChildren: () => import('./user-address-type2/user-address-type2.module').then( m => m.UserAddressType2PageModule)
+  },
+
 
 
 ];
