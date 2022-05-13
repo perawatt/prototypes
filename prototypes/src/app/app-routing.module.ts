@@ -67,6 +67,34 @@ const routes: Routes = [
     loadChildren: () => import('./user-address-type2/user-address-type2.module').then( m => m.UserAddressType2PageModule)
   },
   {
+    path: 'list-template',
+    loadChildren: () => import('./list-template/list-template.module').then( m => m.ListTemplatePageModule)
+  },
+  {
+    path: 'form-input-template',
+    loadChildren: () => import('./form-input-template/form-input-template.module').then( m => m.FormInputTemplatePageModule)
+  },
+  {
+    path: 'condition-template',
+    loadChildren: () => import('./condition-template/condition-template.module').then( m => m.ConditionTemplatePageModule)
+  },
+  {
+    path: 'agreement-template',
+    loadChildren: () => import('./agreement-template/agreement-template.module').then( m => m.AgreementTemplatePageModule)
+  },
+  {
+    path: 'consent-info-user-template',
+    loadChildren: () => import('./consent-info-user-template/consent-info-user-template.module').then( m => m.ConsentInfoUserTemplatePageModule)
+  },
+  {
+    path: 'consent-info-manager-template',
+    loadChildren: () => import('./consent-info-manager-template/consent-info-manager-template.module').then( m => m.ConsentInfoManagerTemplatePageModule)
+  },
+  {
+    path: 'home-template',
+    loadChildren: () => import('./home-template/home-template.module').then( m => m.HomeTemplatePageModule)
+  },
+  {
     path: 'user-address-type3',
     loadChildren: () => import('./user-address-type3/user-address-type3.module').then( m => m.UserAddressType3PageModule)
   },
