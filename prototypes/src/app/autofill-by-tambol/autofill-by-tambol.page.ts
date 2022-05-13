@@ -13,7 +13,7 @@ export class AutofillByTambolPage implements OnInit {
   constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({
       'streetAddress': [null, [Validators.required]],
-      'district': [null, [Validators.required]],
+      'district': ["ศิลา", [Validators.required]],
       'city': [null, [Validators.required]],
       'province': [null, [Validators.required]],
       'postalCode': [null, [Validators.required]],
