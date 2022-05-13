@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ที่อยู่</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <ion-list class="ion-margin-top">
+    <form [formGroup]="fg">
+      <div>
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked">ที่อยู่
+            <ion-text color="danger" *ngIf="isInvalid('streetAddress')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName="streetAddress"
+            placeholder="เช่น หมู่บ้านแสนสุข 144/1 หมู่ 1 ถนนริมบึง"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked">ตำบล
+            <ion-text color="danger" *ngIf="isInvalid('district')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName="district" placeholder="เช่น บางพระ"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked">อำเภอ
+            <ion-text color="danger" *ngIf="isInvalid('city')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName="city" placeholder="เช่น ศรีราชา"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked">จังหวัด
+            <ion-text color="danger" *ngIf="isInvalid('province')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName="province" placeholder="เช่น ชลบุรี"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked">รหัสไปรษณีย์
+            <ion-text color="danger" *ngIf="isInvalid('postalCode')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+          <ion-input type="tel" formControlName="postalCode" placeholder="เช่น 20110"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" color="tertiary">
+          <ion-label position="stacked">หมายเหตุ</ion-label>
+          <ion-textarea type="text" formControlName="remark" placeholder="ระบุบันทึกเพิ่มเติม (ไม่จำเป็น)">
+          </ion-textarea>
+        </ion-item>
+      </div>
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">OK
+      </ion-button>
+    </form>
+  </ion-list>
+</ion-content>

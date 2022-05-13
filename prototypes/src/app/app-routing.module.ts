@@ -46,6 +46,14 @@ const routes: Routes = [
     path: 'memory',
     loadChildren: () => import('./memory/memory.module').then( m => m.MemoryPageModule)
   },
+  {
+    path: 'autofill-by-tambol',
+    loadChildren: () => import('./autofill-by-tambol/autofill-by-tambol.module').then( m => m.AutofillByTambolPageModule)
+  },
+  {
+    path: 'autofill-by-postalcode',
+    loadChildren: () => import('./autofill-by-postalcode/autofill-by-postalcode.module').then( m => m.AutofillByPostalcodePageModule)
+  },
 
 
 ];
