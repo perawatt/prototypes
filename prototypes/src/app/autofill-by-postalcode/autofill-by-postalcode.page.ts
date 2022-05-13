@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AddressService } from '../address.service';
+import { AddressService } from 'src/services/address.service';
 
 @Component({
   selector: 'app-autofill-by-postalcode',
@@ -10,7 +10,8 @@ import { AddressService } from '../address.service';
 export class AutofillByPostalcodePage implements OnInit {
   public fg: FormGroup;
   public isFirstTime: boolean = true;
-  public addressList: object[] = [];
+  public addressList: any[] = [];
+  public filteredAddressList: any[] = [];
 
   constructor(private fb: FormBuilder, private addrSvc: AddressService) {
     this.fg = this.fb.group({
@@ -18,7 +19,7 @@ export class AutofillByPostalcodePage implements OnInit {
       'district': [null, [Validators.required]],
       'city': [null, [Validators.required]],
       'province': [null, [Validators.required]],
-      'postalCode': ["40000", [Validators.required]],
+      'postalCode': [null, [Validators.required]],
       'remark': '',
     });
 
@@ -26,15 +27,26 @@ export class AutofillByPostalcodePage implements OnInit {
     });
 
     this.addressList = addrSvc.getAddressList();
-    console.log(JSON.stringify(this.addressList))
   }
 
   ngOnInit() {
+  }
+
+  public getAddressByPostalcode() {
+    if (this.fg.get("postalCode").value) {
+      const numberOfAddress: number = 10;
+      var selected = this.addressList.filter((item) => { return (item.zipcode.toString()).includes(this.fg.get("postalCode").value)});
+      console.log(JSON.stringify(selected.slice(0,numberOfAddress)))
+      this.filteredAddressList = selected;
+    }
+    else
+    {
+      this.filteredAddressList = [];
+    }
   }
 
   isInvalid(name: string): boolean {
     var ctrl = this.fg.get(name);
     return ctrl.invalid && !this.isFirstTime;
   }
-
 }

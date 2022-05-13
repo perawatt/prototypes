@@ -24,27 +24,19 @@
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input type="tel" formControlName="postalCode" placeholder="เช่น 20110" clearInput></ion-input>
+          <ion-input type="tel" debounce="1000" (ionChange)="getAddressByPostalcode()" formControlName="postalCode"
+            placeholder="เช่น 20110" clearInput></ion-input>
         </ion-item>
         <ion-list lines="full">
-          <ion-item  color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> 40000, ต.บึงเนียม, อ.เมืองขอนแก่น จ.ขอนแก่น
-              </h3>
-            </ion-label>
-          </ion-item>
-          <ion-item  color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> 40000, ต.บ้านค้อ, อ.เมืองขอนแก่น จ.ขอนแก่น
-              </h3>
-            </ion-label>
-          </ion-item>
-          <ion-item  color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> 40000, ต.บ้านทุ่ม, อ.เมืองขอนแก่น จ.ขอนแก่น
-              </h3>
-            </ion-label>
-          </ion-item>
+          <virtual-scroll-element class="ion-content-scroll-host">
+            <ion-item color="tertiary" *ngFor="let addr of filteredAddressList">
+              <ion-label>
+                <h3>
+                  <ion-icon name="arrow-forward"></ion-icon>{{ addr.zipcode }}, {{ addr.district }}, อ.{{ addr.amphoe }} จ.{{ addr.province }}
+                </h3>
+              </ion-label>
+            </ion-item>
+          </virtual-scroll-element>
         </ion-list>
 
         <ion-item lines="full" color="tertiary">
