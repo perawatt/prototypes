@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AddressService } from '../address.service';
 
 @Component({
-  selector: 'app-autofill-by-postalcode',
-  templateUrl: './autofill-by-postalcode.page.html',
-  styleUrls: ['./autofill-by-postalcode.page.scss'],
+  selector: 'app-autofill-by-postalcode-popover',
+  templateUrl: './autofill-by-postalcode-popover.page.html',
+  styleUrls: ['./autofill-by-postalcode-popover.page.scss'],
 })
-export class AutofillByPostalcodePage implements OnInit {
+export class AutofillByPostalcodePopoverPage implements OnInit {
   public fg: FormGroup;
   public isFirstTime: boolean = true;
-  public addressList: object[] = [];
-
-  constructor(private fb: FormBuilder, private addrSvc: AddressService) {
+  
+  constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({
       'streetAddress': [null, [Validators.required]],
       'district': [null, [Validators.required]],
@@ -24,9 +22,6 @@ export class AutofillByPostalcodePage implements OnInit {
 
     this.fg.valueChanges.subscribe(_ => {
     });
-
-    this.addressList = addrSvc.getAddressList();
-    console.log(JSON.stringify(this.addressList))
   }
 
   ngOnInit() {
@@ -36,5 +31,4 @@ export class AutofillByPostalcodePage implements OnInit {
     var ctrl = this.fg.get(name);
     return ctrl.invalid && !this.isFirstTime;
   }
-
 }

@@ -102,6 +102,14 @@ const routes: Routes = [
     path: 'autofill-by-postalcode',
     loadChildren: () => import('./autofill-by-postalcode/autofill-by-postalcode.module').then( m => m.AutofillByPostalcodePageModule)
   },
+  {
+    path: 'autofill-by-tambol-popover',
+    loadChildren: () => import('./autofill-by-tambol-popover/autofill-by-tambol-popover.module').then( m => m.AutofillByTambolPopoverPageModule)
+  },
+  {
+    path: 'autofill-by-postalcode-popover',
+    loadChildren: () => import('./autofill-by-postalcode-popover/autofill-by-postalcode-popover.module').then( m => m.AutofillByPostalcodePopoverPageModule)
+  },
 
 
 
