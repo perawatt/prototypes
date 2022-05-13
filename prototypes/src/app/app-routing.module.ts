@@ -66,6 +66,22 @@ const routes: Routes = [
     path: 'user-address-type2',
     loadChildren: () => import('./user-address-type2/user-address-type2.module').then( m => m.UserAddressType2PageModule)
   },
+  {
+    path: 'user-address-type3',
+    loadChildren: () => import('./user-address-type3/user-address-type3.module').then( m => m.UserAddressType3PageModule)
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
+    path: 'create-phone',
+    loadChildren: () => import('./create-phone/create-phone.module').then( m => m.CreatePhonePageModule)
+  },
+  {
+    path: 'add-phone',
+    loadChildren: () => import('./add-phone/add-phone.module').then( m => m.AddPhonePageModule)
+  },
 
 
 
