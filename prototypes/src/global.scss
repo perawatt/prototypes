@@ -288,6 +288,11 @@ ion-popover {
     overflow-y: scroll;
   }
 
+.custom-popover{
+    --max-height: 250px;
+    --offset-y:-26%;
+}
+
 // Fonts
 // --------------------------------------------------
 @font-face {

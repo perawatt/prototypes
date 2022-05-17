@@ -14,7 +14,7 @@ export class AutofillByTambolPopoverPage implements OnInit {
   constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({
       'streetAddress': [null, [Validators.required]],
-      'district': ["ศิลา", [Validators.required]],
+      'district': [null, [Validators.required]],
       'city': [null, [Validators.required]],
       'province': [null, [Validators.required]],
       'postalCode': [null, [Validators.required]],
