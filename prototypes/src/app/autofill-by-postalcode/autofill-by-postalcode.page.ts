@@ -32,17 +32,30 @@ export class AutofillByPostalcodePage implements OnInit {
   ngOnInit() {
   }
 
-  public getAddressByPostalcode() {
-    if (this.fg.get("postalCode").value) {
+  public getAddressByPostalcode(event:any) {   
+    if (this.fg.get("postalCode").value && event.target.value.toString().length == 5) {
       const numberOfAddress: number = 10;
       var selected = this.addressList.filter((item) => { return (item.zipcode.toString()).includes(this.fg.get("postalCode").value)});
-      console.log(JSON.stringify(selected.slice(0,numberOfAddress)))
       this.filteredAddressList = selected;
     }
     else
     {
-      this.filteredAddressList = [];
+      this.clearList()    
     }
+  }
+
+  public clearList(){
+    this.filteredAddressList = [];
+  }
+
+  public onSelectAddress(address:any){
+    this.fg.get('district').setValue(address.district);
+    this.fg.get('city').setValue(address.amphoe);
+    this.fg.get('province').setValue(address.province);
+    if(this.fg.get('postalCode').value != address.zipcode){
+      this.fg.get('postalCode').setValue(address.zipcode);
+    }
+    this.clearList()    
   }
 
   isInvalid(name: string): boolean {

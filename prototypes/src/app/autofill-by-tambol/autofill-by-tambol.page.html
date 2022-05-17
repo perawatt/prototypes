@@ -24,27 +24,18 @@
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input type="text" formControlName="district" placeholder="เช่น บางพระ" clearInput></ion-input>
+          <ion-input type="text" formControlName="district" debounce="1000" (ionChange)="getAddressByTambol()" placeholder="เช่น บางพระ" clearInput></ion-input>
         </ion-item>
-        <ion-list>
-          <ion-item lines="full" color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> โนนศิลาเลิง, อ.ฆ้องชัย จ.กาฬสินธุ์ 46130
-              </h3>
-            </ion-label>
-          </ion-item>
-          <ion-item lines="full" color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> โนนศิลา, อ.สหัสขันธ์ จ.กาฬสินธุ์ 46140
-              </h3>
-            </ion-label>
-          </ion-item>
-          <ion-item lines="full" color="tertiary">
-            <ion-label>
-              <h3><ion-icon name="arrow-forward"></ion-icon> ศิลา, อ.เมืองขอนแก่น จ.ขอนแก่น 40000
-              </h3>
-            </ion-label>
-          </ion-item>
+        <ion-list lines="full">
+          <virtual-scroll-element class="ion-content-scroll-host">
+            <ion-item color="tertiary" *ngFor="let addr of filteredAddressList">
+              <ion-label>
+                <h3>
+                  <ion-icon name="arrow-forward"></ion-icon> {{ addr.district }}, อ.{{ addr.amphoe }} จ.{{ addr.province }} {{ addr.zipcode }}
+                </h3>
+              </ion-label>
+            </ion-item>
+          </virtual-scroll-element>
         </ion-list>
 
 
