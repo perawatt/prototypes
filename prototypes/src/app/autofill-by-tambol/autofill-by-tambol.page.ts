@@ -12,7 +12,7 @@ export class AutofillByTambolPage implements OnInit {
   public isFirstTime: boolean = true;
   public addressList: any[] = [];
   public filteredAddressList: any[] = [];
-  
+
   constructor(private fb: FormBuilder, private addrSvc: AddressService) {
     this.fg = this.fb.group({
       'streetAddress': [null, [Validators.required]],
@@ -29,21 +29,31 @@ export class AutofillByTambolPage implements OnInit {
     this.addressList = addrSvc.getAddressList();
   }
 
-  public getAddressByTambol() {
+  public getAddressByTambol(event:any) {
     if (this.fg.get("district").value) {
       const numberOfAddress: number = 5;
-      var selected = this.addressList.filter((item) => { return (item.district.toString()).includes(this.fg.get("district").value)});
-      selected = selected.slice(0,numberOfAddress);
-      console.log(JSON.stringify(selected.slice(0,numberOfAddress)))
+      var selected = this.addressList.filter((item) => { return (item.district.toString()).includes(this.fg.get("district").value) });
+      selected = selected.slice(0, numberOfAddress);
       this.filteredAddressList = selected;
     }
-    else
-    {
+    else {
       this.filteredAddressList = [];
     }
   }
 
   ngOnInit() {
+  }
+
+  public clearList() {
+    this.filteredAddressList = [];
+  }
+
+  public onSelectAddress(address: any) {
+    this.fg.get('district').setValue(address.district);
+    this.fg.get('city').setValue(address.amphoe);
+    this.fg.get('province').setValue(address.province);
+    this.fg.get('postalCode').setValue(address.zipcode);
+    this.clearList()
   }
 
   isInvalid(name: string): boolean {

@@ -34,7 +34,6 @@ export class AutofillByPostalcodePage implements OnInit {
 
   public getAddressByPostalcode(event:any) {   
     if (this.fg.get("postalCode").value && event.target.value.toString().length == 5) {
-      const numberOfAddress: number = 10;
       var selected = this.addressList.filter((item) => { return (item.zipcode.toString()).includes(this.fg.get("postalCode").value)});
       this.filteredAddressList = selected;
     }
