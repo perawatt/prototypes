@@ -57,6 +57,15 @@ export class AutofillByPostalcodePage implements OnInit {
     this.clearList()    
   }
 
+  onSave() {
+    console.log(this.fg.valid)
+    if (this.isFirstTime) {
+      this.isFirstTime = false;
+    }
+    if (this.fg.valid) {
+    }
+  }
+
   isInvalid(name: string): boolean {
     var ctrl = this.fg.get(name);
     return ctrl.invalid && !this.isFirstTime;

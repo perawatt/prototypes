@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Autofill by Postal Code</ion-title>
+    <ion-title>ที่อยู่</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list class="ion-margin-top">
-    <form [formGroup]="fg">
+  <ion-list class="ion-margin-top" mode="ios">
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
       <div>
         <ion-item lines="full" color="tertiary">
           <ion-label position="stacked">ที่อยู่
@@ -15,62 +15,64 @@
             </ion-text>
           </ion-label>
           <ion-input type="text" formControlName="streetAddress"
-            placeholder="เช่น หมู่บ้านแสนสุข 144/1 หมู่ 1 ถนนริมบึง"></ion-input>
+            placeholder="เช่น หมู่บ้านแสนสุข 144/1 หมู่ 1 ถนนริมบึง" clearInput></ion-input>
         </ion-item>
 
         <ion-item lines="full" color="tertiary">
           <ion-label position="stacked">รหัสไปรษณีย์
-            <ion-text color="danger" *ngIf="isInvalid('postalCode')">
+            <ion-text color="danger"
+              *ngIf="isInvalid('district') || isInvalid('city') || isInvalid('province')|| isInvalid('postalCode')">
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input minlength="5" maxlength="5" type="tel" debounce="1000" (ionChange)="getAddressByPostalcode($event)" formControlName="postalCode"
-            placeholder="เช่น 20110" clearInput></ion-input>
+          <ion-input minlength="5" maxlength="5" type="tel" debounce="1000" (ionChange)="getAddressByPostalcode($event)"
+            formControlName="postalCode" placeholder="เช่น 20110" clearInput></ion-input>
         </ion-item>
         <ion-list lines="full" class="scroll-list">
-            <ion-item color="tertiary" *ngFor="let addr of filteredAddressList" (click)="onSelectAddress(addr)">
-              <ion-label>
-                <h3>
-                  <ion-icon name="arrow-forward"></ion-icon> {{ addr.zipcode }}, {{ addr.district }}, อ.{{ addr.amphoe }} จ.{{ addr.province }}
-                </h3>
-              </ion-label>
-            </ion-item>
+          <ion-item color="tertiary" *ngFor="let addr of filteredAddressList" (click)="onSelectAddress(addr)">
+            <ion-label>
+              <h3>
+                <ion-icon name="arrow-forward"></ion-icon> {{ addr.zipcode }}, {{ addr.district }}, อ.{{ addr.amphoe }}
+                จ.{{ addr.province }}
+              </h3>
+            </ion-label>
+          </ion-item>
         </ion-list>
 
-        <ion-item lines="full" color="tertiary">
+        <ion-item lines="full" color="light">
           <ion-label position="stacked">ตำบล
             <ion-text color="danger" *ngIf="isInvalid('district')">
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input type="text" formControlName="district" placeholder="เช่น บางพระ"></ion-input>
+          <ion-input readonly type="text" formControlName="district" placeholder="เช่น บางพระ"></ion-input>
         </ion-item>
 
-        <ion-item lines="full" color="tertiary">
+        <ion-item lines="full" color="light">
           <ion-label position="stacked">อำเภอ
             <ion-text color="danger" *ngIf="isInvalid('city')">
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input type="text" formControlName="city" placeholder="เช่น ศรีราชา"></ion-input>
+          <ion-input readonly type="text" formControlName="city" placeholder="เช่น ศรีราชา"></ion-input>
         </ion-item>
 
-        <ion-item lines="full" color="tertiary">
+        <ion-item lines="full" color="light">
           <ion-label position="stacked">จังหวัด
             <ion-text color="danger" *ngIf="isInvalid('province')">
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input type="text" formControlName="province" placeholder="เช่น ชลบุรี"></ion-input>
+          <ion-input readonly type="text" formControlName="province" placeholder="เช่น ชลบุรี"></ion-input>
         </ion-item>
 
         <ion-item lines="none" color="tertiary">
           <ion-label position="stacked">หมายเหตุ</ion-label>
-          <ion-textarea type="text" formControlName="remark" placeholder="ระบุบันทึกเพิ่มเติม (ไม่จำเป็น)">
+          <ion-textarea type="text" formControlName="remark" placeholder="ระบุบันทึกเพิ่มเติม (ไม่จำเป็น)" clearInput>
           </ion-textarea>
         </ion-item>
       </div>
-      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">OK
+      <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">OK
       </ion-button>
     </form>
   </ion-list>

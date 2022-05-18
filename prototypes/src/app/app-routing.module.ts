@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'list-address',
+    redirectTo: 'autofill-by-postalcode',
     pathMatch: 'full'
   },
   {
@@ -62,7 +62,8 @@ const routes: Routes = [
   {
     path: 'list-address',
     loadChildren: () => import('./list-address/list-address.module').then( m => m.ListAddressPageModule)
-  },  {
+  },
+  {
     path: 'user-address-type2',
     loadChildren: () => import('./user-address-type2/user-address-type2.module').then( m => m.UserAddressType2PageModule)
   },
