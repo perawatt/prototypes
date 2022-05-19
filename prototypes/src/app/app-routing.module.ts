@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'autofill-by-postalcode',
+    redirectTo: 'sample-page',
     pathMatch: 'full'
+  },
+  {
+    path: 'sample-page',
+    loadChildren: () => import('./sample-page/sample-page.module').then( m => m.SamplePagePageModule)
   },
   {
     path: 'cart-edit-template',

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sample_Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
+    <div>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">เบอร์ติดต่อ
+          <ion-text color="danger" *ngIf="isInvalid('phone')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="tel" formControlName="phone"
+          placeholder="เช่น 088-000-0000" clearInput></ion-input>
+      </ion-item>
+      </div>
+
+  <app-autofill></app-autofill>
+
+  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">OK
+  </ion-button>
+
+  </form>
+
+</ion-content>
