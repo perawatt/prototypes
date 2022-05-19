@@ -28,16 +28,18 @@
           <ion-input minlength="5" maxlength="5" type="tel" (ionChange)="getAddressByPostalcode($event)"
             formControlName="postalCode" placeholder="เช่น 20110" clearInput></ion-input>
         </ion-item>
-        <ion-list lines="full" class="scroll-list">
-          <ion-item color="tertiary" *ngFor="let addr of filteredAddressList" (click)="onSelectAddress(addr)">
-            <ion-label>
-              <h3>
-                <ion-icon name="arrow-forward"></ion-icon> {{ addr.zipcode }}, {{ addr.district }}, อ.{{ addr.amphoe }}
-                จ.{{ addr.province }}
-              </h3>
-            </ion-label>
-          </ion-item>
-        </ion-list>
+        <div class="scroll-list">
+          <ion-list lines="full">
+            <ion-item color="tertiary" *ngFor="let addr of filteredAddressList" (click)="onSelectAddress(addr)">
+              <ion-label>
+                <h3>
+                  <ion-icon name="arrow-forward"></ion-icon> {{ addr.zipcode }}, {{ addr.district }}, อ.{{ addr.amphoe }}
+                  จ.{{ addr.province }}
+                </h3>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
 
         <ion-item lines="full" color="light">
           <ion-label position="stacked">ตำบล

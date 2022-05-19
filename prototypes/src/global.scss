@@ -283,15 +283,14 @@ ion-popover {
     --width: 95%;
 }
 
-.scroll-list {
-    max-height: 250px;
-    overflow-y: scroll;
+.scroll-list { 
+    padding:5px;
+    ion-list{
+        max-height: 250px;
+        overflow-y: scroll;
+        border-radius: 15px;
+    }
   }
-
-.custom-popover{
-    --max-height: 250px;
-    --offset-y:-26%;
-}
 
 // Fonts
 // --------------------------------------------------
