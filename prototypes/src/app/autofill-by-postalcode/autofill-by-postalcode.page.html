@@ -25,7 +25,7 @@
               ข้อมูลไม่ถูกต้อง
             </ion-text>
           </ion-label>
-          <ion-input minlength="5" maxlength="5" type="tel" debounce="1000" (ionChange)="getAddressByPostalcode($event)"
+          <ion-input minlength="5" maxlength="5" type="tel" (ionChange)="getAddressByPostalcode($event)"
             formControlName="postalCode" placeholder="เช่น 20110" clearInput></ion-input>
         </ion-item>
         <ion-list lines="full" class="scroll-list">
